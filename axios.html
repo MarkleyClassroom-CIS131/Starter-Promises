@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  axios-http.com   -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <img id="spinner" src="spinner.gif" alt="#" style="display:none;width:100px">
+    <script>
+
+    function getLaunches(spinner){
+
+
+        axios.get("https://lldev.thespacedevs.com/2.3.0/launches/")
+                .then(response => {
+                    // console.log("User list:", response); review what axios returns, headers, status, request...
+                    // console.log("User list:", response.data);
+                    console.log("User list:", response.data.results);
+                    spinner.style.display = "none"
+                })
+                .catch(error => {
+                    console.error("Error fetching users:", error);
+                });
+    }
+
+
+
+        function showSpinner() {
+            const spinner = document.getElementById("spinner");
+            spinner.style.display = "block"
+            getLaunches(spinner)
+        }
+        showSpinner()
+
+        
+    </script>
+</body>
+</html>
